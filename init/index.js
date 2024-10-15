@@ -8,13 +8,15 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
- const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust"
+  const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
   await mongoose.connect(MONGO_URL);
-};
-const initDB = async ()=>{
-    await Listing.deleteMany({});
-    await Listing.insertMany(initData.data);
-    console.log("data was initialized");
-
+}
+const initDB = async () => {
+  await Listing.deleteMany({});
+  initData.data = initData.data.map((obj) => {
+    return { ...obj, owner: "670625dddccc217c37396359" };
+  });
+  await Listing.insertMany(initData.data);
+  console.log("data was initialized");
 };
 initDB();

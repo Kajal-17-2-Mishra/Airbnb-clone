@@ -2,12 +2,19 @@ html,
 body {
   height: 100%;
 }
-body {
-  font-family: "Plus Jakarta Sans", sans-serif !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
+
+#body-container {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  min-height: 100vh;
 }
+
+.container {
+  flex: 1;
+}
+
 /* navbar styling */
 .navbar {
   height: 5rem;
@@ -54,7 +61,7 @@ body {
   justify-content: center;
 }
 /* Cards */
-.card {
+.listing-card {
   border: none !important;
   margin-bottom: 2rem;
 }
