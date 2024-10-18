@@ -13,13 +13,8 @@ const listingSchema = new Schema({
     type: String,
   },
   image: {
-    type: String,
-    default:
-      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    set: (v) =>
-      v === ""
-        ? "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        : v,
+    url: String,
+    filename: String,
   },
   price: {
     type: Number,

@@ -100,3 +100,8 @@ body {
   height: 5rem;
   width: 5rem;
 }
+
+.img_preview {
+  height: 100px;
+  width: 250px;
+}
