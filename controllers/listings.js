@@ -1,5 +1,4 @@
 const Listing = require("../models/listing.js");
-// const ExpressError = require("../utils/ExpressError.js")
 
 // index route callback
 module.exports.index = async (req, res) => {

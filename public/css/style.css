@@ -7,7 +7,6 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   min-height: 100vh;
 }
 
@@ -26,6 +25,7 @@ body {
 }
 .nav-link {
   color: #222222 !important;
+  margin-left: 10px;
 }
 /* footer styling */
 .f-info-links a {

@@ -1,5 +1,118 @@
 <% layout("/layouts/boilerplate") %>
-<h3>All listings</h3>
+<style>
+  .filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 766px) {
+    .filter p {
+      color: #fff !important;
+    }
+    .filter i {
+      color: #fff !important;
+    }
+  }
+
+  .tax-info {
+    display: none;
+  }
+
+  .tax-toggle {
+    border: 1px solid black;
+    border-radius: 0.8rem;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#filterNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="filterNav">
+      <div id="filters" class="navbar-nav">
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <p>Trending</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-bed"></i></div>
+          <p>Rooms</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-mountain-city"></i></div>
+          <p>Iconic Cities</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-mountain"></i></div>
+          <p>Mountains</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-brands fa-fort-awesome"></i></div>
+          <p>Castles</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-person-swimming"></i></div>
+          <p>Amazing Pools</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-campground"></i></div>
+          <p>Camping</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-tractor"></i></div>
+          <p>Farms</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-regular fa-snowflake"></i></div>
+          <p>Arctic</p>
+        </div>
+        <div class="nav-item filter">
+          <div><i class="fa-solid fa-igloo"></i></div>
+          <p>Domes</p>
+        </div>
+
+        <div class="nav-item mt-3 tax-toggle">
+          <div class="form-check-reverse form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault">
+              Display total after taxes
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Indexing of Listings-->
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for(listing of allListings) {%>
   <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -14,10 +127,24 @@
       <div class="card-body">
         <p class="card-text">
           <b><%= listing.title %> </b><br />
-          &#8377; <%= listing.price.toLocaleString("en-IN") %>
+          &#8377; <%= listing.price.toLocaleString("en-IN") %>/ night
+          <i class="tax-info"> &nbsp; &nbsp; &nbsp; +18% GST </i>
         </p>
       </div>
     </div>
   </a>
   <% } %>
 </div>
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
