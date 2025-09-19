@@ -1,50 +1,81 @@
 <style>
+  /* General button styling */
   .btn-search {
     background-color: #fe424d;
     color: #fff;
     border-radius: 1rem;
     padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
+
   .btn-search:hover {
     background-color: #fe424d;
     color: #fff;
   }
+
   .btn-search i {
     display: inline;
     margin-right: 1rem;
   }
+
+  /* Search bar input */
   .search-inp {
     border-radius: 1rem;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
+
+  /* ===== Mobile-Specific Styles ===== */
   @media (max-width: 766px) {
-    .search-bar {
-      display: none;
+    /* Change background color of collapsed menu */
+    .mobile-menu {
+      background-color: #f9f9f9; /* Red background for hamburger menu */
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    /* Change link text color */
+    .mobile-menu .nav-link {
+      color: #222222 !important; /* Make text white */
+      font-weight: 500;
+      padding: 0.5rem 0;
+    }
+
+    /* Link hover effect */
+    .mobile-menu .nav-link:hover {
+      color: #ffd700 !important; /* Golden hover effect */
     }
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"
-      ><i class="fa-regular fa-compass"></i
-    ></a>
+    <!-- Logo -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+
+    <!-- Hamburger Button -->
     <button
-      class="navbar-toggler collapsible-btn"
+      class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNavAltMarkup"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <!-- Collapsible Menu -->
+    <div class="collapse navbar-collapse mobile-menu" id="navbarNavAltMarkup">
+      <!-- Left Links -->
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
-      <!-- Search bar -->
 
-      <div class="navbar-nav ms-auto search-bar">
+      <!-- Search Bar - Desktop Only -->
+      <div class="navbar-nav ms-auto search-bar d-none d-md-flex">
         <form class="d-flex" role="search">
           <input
             class="form-control me-2 search-inp"
@@ -52,11 +83,12 @@
             placeholder="Search destinations"
           />
           <button class="btn btn-search" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>Search
+            <i class="fa-solid fa-magnifying-glass"></i> Search
           </button>
         </form>
       </div>
-      <!-- login and signup and add new listing-->
+
+      <!-- Login, Signup, Logout -->
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
         <% if(!currUser) { %>
